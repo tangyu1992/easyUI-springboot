@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangyu.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="com.tangyu.model.User">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="INTEGER" />
+		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
+		<result column="mobile" property="hideMobile" jdbcType="VARCHAR" />
+		<result column="creator_id" property="creatorId" jdbcType="BIGINT" />
+		<result column="tenant_id" property="tenantId" jdbcType="BIGINT" />
+		<result column="contact_list_id" property="contactListId"
+			jdbcType="BIGINT" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="callback_date" property="callbackDate"
+			jdbcType="TIMESTAMP" />
+		<result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+		<result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+		<result column="creatorName" property="creatorName" jdbcType="VARCHAR" />
+		<result column="creatorAgentName" property="creatorAgentName"
+			jdbcType="VARCHAR" />
+		<result column="last_contact_time" property="lastContactTime"
+			jdbcType="TIMESTAMP" />
+		<result column="import_agent_id" property="importAgentId"
+			jdbcType="BIGINT" />
+		<result column="import_agent_name" property="importAgentName"
+			jdbcType="VARCHAR" />
+
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name, gender, mobile, creator_id, tenant_id,
+		contact_list_id, status,
+		callback_date, created_at, updated_at,
+		last_contact_time,import_agent_id,import_agent_name
+	</sql>
+
+
+	<!-- 新建客户 -->
+	<insert id="addAccount" parameterType="com.tangyu.model.User"
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO accounts (name,
+		gender, mobile, creator_id, tenant_id,
+		contact_list_id, status,
+		callback_date, created_at,
+		updated_at,import_agent_id,import_agent_name)
+		VALUES
+		(#{name,jdbcType=VARCHAR},
+		#{gender,jdbcType=INTEGER},
+		#{mobile,jdbcType=VARCHAR},
+		#{creatorId,jdbcType=INTEGER},
+		#{tenantId,jdbcType=BIGINT},
+		#{contactListId,jdbcType=BIGINT},
+		#{status,jdbcType=INTEGER},
+		#{callbackDate,jdbcType=TIMESTAMP},
+		#{createdAt,jdbcType=TIMESTAMP},
+		#{updatedAt,jdbcType=TIMESTAMP},
+		#{importAgentId,jdbcType=BIGINT},
+		#{importAgentName,jdbcType=VARCHAR})
+	</insert>
+	<delete id="deleteRepeatAccountsByAccount">
+		delete from accounts a where a.ctid not in(select
+		max(b.ctid) from accounts
+		b where
+		(a.mobile like '%'||b.mobile||'%' or
+		b.mobile like
+		'%'||a.mobile||'%') and
+		a.tenant_id=#{tenantId} )
+		and
+		a.tenant_id=#{tenantId} and a.contact_list_id=#{contactListId};
+	</delete>
+
+	<!-- 修改客户信息 -->
+	<update id="updatet" parameterType="com.tangyu.model.User">
+		UPDATE accounts
+		<set>
+			<if test="name!=null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="gender!=null">
+				gender = #{gender,jdbcType=INTEGER},
+			</if>
+			<if test="mobile!=null and mobile != ''">
+				mobile = #{mobile,jdbcType=VARCHAR},
+			</if>
+			<if test="tenantId!=null">
+				tenant_id = #{tenantId,jdbcType=BIGINT},
+			</if>
+			<if test="contactListId!=null">
+				contact_list_id = #{contactListId,jdbcType=BIGINT},
+			</if>
+			<if test="status!=null">
+				status = #{status,jdbcType=INTEGER},
+			</if>
+			creator_id = #{creatorId,jdbcType=INTEGER},
+			callback_date =
+			#{callbackDate,jdbcType=TIMESTAMP},
+			<if test="createdAt!=null">
+				created_at = #{createdAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedAt!=null">
+				updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+			</if>
+		</set>
+		WHERE id = #{id,jdbcType=BIGINT}
+	</update>
+
+	<select id="queryByMap" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(a.id) FROM user
+		<if test="accountIds!=null">
+			AND a.id IN (
+			<foreach collection="accountIds" item="id" separator=",">
+				#{id}
+			</foreach>
+			)
+		</if>
+		<!-- 公海客户 -->
+		<if test="creator_id!=null">
+			AND a.creator_id IS NULL
+		</if>
+		AND a.status=0
+	</select>
+
+</mapper>
