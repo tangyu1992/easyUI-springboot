@@ -17,4 +17,8 @@ public class UserController {
 	public String index() {
 		return "";
 	}
+	@RequestMapping(value="new",method = RequestMethod.GET)
+	public String newPage() {
+		return "/user/new";
+	}
 }

@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>welcome to tangyu's website!</title>
+	<link rel="stylesheet" type="text/css"
+	href="/assets/third/easyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/third/easyUI/themes/icon.css">
+<script type="text/javascript" src="/assets/third/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/assets/third/easyUI/jquery.easyui.min.js"></script>
 </head>
 <body>
-<h3 style="color:red">欢迎来到唐瑜的test站点！</h3>
-<td th:text="${ip}">Red Chair</td>
+	<div class="easyui-layout" style="width: 100%%; height: 600px;">
+	<div id="north" region="north" title="" style="padding: 5px;height: 10%;">
+		<h3 style="color: red" align="center">欢迎来到唐瑜的test站点！</h3>
+		</div>
+		<div region="west" split="true" title="导航栏" style="width: 20%;">
+		</div>
+		<div id="content" region="center" style="padding: 5px;">
+		
+		</div>
+		<div id="south" region="south" title="" style="padding: 5px;height: 10%;">
+		<center><p style="padding:5px;margin:0;">版权所有 请联系QQ:740424625</p></center>
+		</div>
+	</div>
+	<td th:text="${ip}">Red Chair</td>
+	<a href="/users/new">注册</a>
 </body>
 </html>

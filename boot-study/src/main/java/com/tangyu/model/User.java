@@ -12,11 +12,15 @@ public class User {
 	private Long id;
 	private String name;
 	private Integer age;
+	private Integer gender;
 	private String mobile;
 	private Date birthday;
 	private String password;
 	private String local;
 	private String eMail;
+	private Boolean status;
+	private Date createdAt;
+	private Date updatedAt;
 	private String remark;
 
 	public Long getId() {
@@ -91,9 +95,43 @@ public class User {
 		this.remark = remark;
 	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public Integer getGender() {
+		return gender;
+	}
+
+	public void setGender(Integer gender) {
+		this.gender = gender;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age + ", mobile=" + mobile + ", birthday=" + birthday
-				+ ", password=" + password + ", local=" + local + ", eMail=" + eMail + ", remark=" + remark + "]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", mobile=" + mobile
+				+ ", birthday=" + birthday + ", password=" + password + ", local=" + local + ", eMail=" + eMail
+				+ ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", remark=" + remark
+				+ "]";
 	}
 }

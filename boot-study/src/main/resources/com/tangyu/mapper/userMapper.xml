@@ -2,124 +2,207 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.tangyu.mapper.UserMapper">
 	<resultMap id="BaseResultMap" type="com.tangyu.model.User">
-		<id column="id" property="id" jdbcType="BIGINT" />
-		<result column="name" property="name" jdbcType="VARCHAR" />
-		<result column="gender" property="gender" jdbcType="INTEGER" />
-		<result column="mobile" property="mobile" jdbcType="VARCHAR" />
-		<result column="mobile" property="hideMobile" jdbcType="VARCHAR" />
-		<result column="creator_id" property="creatorId" jdbcType="BIGINT" />
-		<result column="tenant_id" property="tenantId" jdbcType="BIGINT" />
-		<result column="contact_list_id" property="contactListId"
-			jdbcType="BIGINT" />
-		<result column="status" property="status" jdbcType="INTEGER" />
-		<result column="callback_date" property="callbackDate"
-			jdbcType="TIMESTAMP" />
-		<result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
-		<result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
-		<result column="creatorName" property="creatorName" jdbcType="VARCHAR" />
-		<result column="creatorAgentName" property="creatorAgentName"
-			jdbcType="VARCHAR" />
-		<result column="last_contact_time" property="lastContactTime"
-			jdbcType="TIMESTAMP" />
-		<result column="import_agent_id" property="importAgentId"
-			jdbcType="BIGINT" />
-		<result column="import_agent_name" property="importAgentName"
-			jdbcType="VARCHAR" />
-
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="age" property="age" />
+		<result column="gender" property="gender" />
+		<result column="mobile" property="mobile" />
+		<result column="birthday" property="birthday" />
+		<result column="password" property="password" />
+		<result column="local" property="local" />
+		<result column="e_mail" property="eMail" />
+		<result column="status" property="status" />
+		<result column="created_at" property="createdAt" />
+		<result column="updated_at" property="updatedAt" />
+		<result column="remark" property="remark" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, name, gender, mobile, creator_id, tenant_id,
-		contact_list_id, status,
-		callback_date, created_at, updated_at,
-		last_contact_time,import_agent_id,import_agent_name
+		id, name, age,gender, mobile, birthday, password,
+		local,email, status, created_at, updated_at,
+		remark
 	</sql>
-
-
 	<!-- 新建客户 -->
 	<insert id="addAccount" parameterType="com.tangyu.model.User"
 		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO accounts (name,
-		gender, mobile, creator_id, tenant_id,
-		contact_list_id, status,
-		callback_date, created_at,
-		updated_at,import_agent_id,import_agent_name)
-		VALUES
-		(#{name,jdbcType=VARCHAR},
-		#{gender,jdbcType=INTEGER},
-		#{mobile,jdbcType=VARCHAR},
-		#{creatorId,jdbcType=INTEGER},
-		#{tenantId,jdbcType=BIGINT},
-		#{contactListId,jdbcType=BIGINT},
-		#{status,jdbcType=INTEGER},
-		#{callbackDate,jdbcType=TIMESTAMP},
-		#{createdAt,jdbcType=TIMESTAMP},
-		#{updatedAt,jdbcType=TIMESTAMP},
-		#{importAgentId,jdbcType=BIGINT},
-		#{importAgentName,jdbcType=VARCHAR})
-	</insert>
-	<delete id="deleteRepeatAccountsByAccount">
-		delete from accounts a where a.ctid not in(select
-		max(b.ctid) from accounts
-		b where
-		(a.mobile like '%'||b.mobile||'%' or
-		b.mobile like
-		'%'||a.mobile||'%') and
-		a.tenant_id=#{tenantId} )
-		and
-		a.tenant_id=#{tenantId} and a.contact_list_id=#{contactListId};
-	</delete>
+		insert into user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="age != null">
+				age,
+			</if>
+			<if test="gender != null">
+				gender,
+			</if>
+			<if test="mobile != null">
+				mobile,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="local != null">
+				local,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
 
-	<!-- 修改客户信息 -->
+			<if test="status != null">
+				status,
+			</if>
+			<if test="createdAt != null">
+				created_at,
+			</if>
+			<if test="updatedAt != null">
+				updated_at,
+			</if>
+			<if test="remark != null">
+				remark,
+			</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="name != null">
+				#{name} ,
+			</if>
+			<if test="age != null">
+				#{age},
+			</if>
+			<if test="gender != null">
+				#{gender} ,
+			</if>
+			<if test="mobile != null">
+				#{mobile},
+			</if>
+			<if test="birthday != null">
+				#{birthday},
+			</if>
+			<if test="password != null">
+				#{password} ,
+			</if>
+			<if test="local != null">
+				#{local},
+			</if>
+			<if test="email != null">
+				#{email} ,
+			</if>
+			<if test="status != null">
+				#{status} ,
+			</if>
+			<if test="createdAt != null">
+				#{created_at},
+			</if>
+			<if test="updatedAt != null">
+				#{updated_at},
+			</if>
+			<if test="remark != null">
+				#{remark},
+			</if>
+		</trim>
+	</insert>
+
 	<update id="updatet" parameterType="com.tangyu.model.User">
 		UPDATE accounts
 		<set>
-			<if test="name!=null">
-				name = #{name,jdbcType=VARCHAR},
+			<if test="name != null">
+				namename=#{name} ,
 			</if>
-			<if test="gender!=null">
-				gender = #{gender,jdbcType=INTEGER},
+			<if test="age != null">
+				age=#{age},
 			</if>
-			<if test="mobile!=null and mobile != ''">
-				mobile = #{mobile,jdbcType=VARCHAR},
+			<if test="gender != null">
+				gender=#{gender} ,
 			</if>
-			<if test="tenantId!=null">
-				tenant_id = #{tenantId,jdbcType=BIGINT},
+			<if test="mobile != null">
+				mobile=#{mobile},
 			</if>
-			<if test="contactListId!=null">
-				contact_list_id = #{contactListId,jdbcType=BIGINT},
+			<if test="birthday != null">
+				birthday=#{birthday},
 			</if>
-			<if test="status!=null">
-				status = #{status,jdbcType=INTEGER},
+			<if test="password != null">
+				password=#{password} ,
 			</if>
-			creator_id = #{creatorId,jdbcType=INTEGER},
-			callback_date =
-			#{callbackDate,jdbcType=TIMESTAMP},
-			<if test="createdAt!=null">
-				created_at = #{createdAt,jdbcType=TIMESTAMP},
+			<if test="local != null">
+				local=#{local},
 			</if>
-			<if test="updatedAt!=null">
-				updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+			<if test="email != null">
+				email=#{email} ,
 			</if>
+			<if test="status != null">
+				status=#{status} ,
+			</if>
+			<if test="remark != null">
+				remark=#{remark},
+			</if>
+			updated_at = now()
 		</set>
 		WHERE id = #{id,jdbcType=BIGINT}
 	</update>
 
 	<select id="queryByMap" parameterType="java.util.Map"
-		resultType="Integer">
-		SELECT COUNT(a.id) FROM user
-		<if test="accountIds!=null">
-			AND a.id IN (
-			<foreach collection="accountIds" item="id" separator=",">
-				#{id}
-			</foreach>
-			)
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Relation_Column_List" />
+		FROM user
+		where 1=1
+		<if test="id!=null">
+			and id=#{id}
 		</if>
-		<!-- 公海客户 -->
-		<if test="creator_id!=null">
-			AND a.creator_id IS NULL
+		<if test="name!=null">
+			and name like '%${name}%'
 		</if>
-		AND a.status=0
+		<if test="mobile!=null">
+			and mobile like '%${mobile}%'
+		</if>
+		<if test="statue!=null">
+			and status=#{status}
+		</if>
+		<if test="gender!=null">
+			and gender=#{gender}
+		</if>
+		order by id asc limit #{pageSize} offset #{pageNum}
 	</select>
 
+	<select id="queryByMapCount" parameterType="java.util.Map"
+		resultType="Integer">
+		SELECT COUNT(a.id) FROM user
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="name!=null">
+			and name like '%${name}%'
+		</if>
+		<if test="mobile!=null">
+			and mobile like '%${mobile}%'
+		</if>
+		<if test="statue!=null">
+			and status=#{status}
+		</if>
+		<if test="gender!=null">
+			and gender=#{gender}
+		</if>
+	</select>
+
+	<delete id="deleteByMap" parameterType="java.util.Map">
+		delete from user where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="statue!=null">
+			and status=#{status}
+		</if>
+		<if test="gender!=null">
+			and gender=#{gender}
+		</if>
+	</delete>
 </mapper>
