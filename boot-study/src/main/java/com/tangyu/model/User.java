@@ -18,7 +18,7 @@ public class User {
 	private String password;
 	private String local;
 	private String eMail;
-	private Boolean status;
+	private Integer status;
 	private Date createdAt;
 	private Date updatedAt;
 	private String remark;
@@ -119,11 +119,11 @@ public class User {
 		this.gender = gender;
 	}
 
-	public Boolean getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

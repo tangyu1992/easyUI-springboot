@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>welcome to tangyu's website!</title>
+<link rel="shortcut icon" type="image/png" href="/ty.png">
 <link rel="stylesheet" type="text/css"
 	href="/assets/third/js/easyUI/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
@@ -74,7 +75,10 @@
 				</div>
 			</div>
 		</div>
-		<div id="content" region="center" style="padding: 5px;"></div>
+		<div id="content" region="center" style="padding: 5px;">
+			<img id="img" src="" title="单击刷新" onclick="refreashCode()" style="display: inline" /> <input
+				type="hidden" id="code" name="code" value="" />
+		</div>
 		<div id="south" region="south" title=""
 			style="padding: 5px; height: 5%;">
 			<center>
