@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+<link rel="shortcut icon" type="image/png" href="/ty.png">
+<link rel="stylesheet" type="text/css"
+	href="/assets/third/js/easyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/third/js/easyUI/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="/assets/third/css/clock/clock.css">
+<script type="text/javascript"
+	src="/assets/third/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/ty/api/code.api.js"></script>
+<script type="text/javascript" src="/assets/ty/js/login.js"></script>
+<script type="text/javascript"
+	src="/assets/third/js/easyUI/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<div class="easyui-layout" fit="true">
+		<div data-options="region:'center'" fit="true" style="background-image:url('/assets/ty/images/login_background.jpg');background-size:cover;">
+			<div class="easyui-layout" fit="true">
+				<div id="north" region="north" style="padding: 5px; height: 15%;">
+					<h1 style="color: #EE1289" align="center">欢迎来到唐瑜的test站点！请登录！</h1>
+				</div>
+				<div id="content" region="center" style="padding: 5px;">
+					<form id="form" method="post">
+						<table align="center">
+							<tr>
+								<td>email:</td>
+								<td><input class="easyui-validatebox" type="text"
+									name="email" data-options="validType:'email'" /></td>
+							</tr>
+							<tr>
+								<td>密码:</td>
+								<td><input class="easyui-validatebox" type="password"
+									name="password" data-options="required:true" /></td>
+							</tr>
+							<tr>
+								<td>验证码:</td>
+								<td><input class="easyui-validatebox" type="text"
+									name="code" data-options="required:true" /></td>
+								<td><img id="img" src="" title="单击刷新"
+									onclick="refreashCode1()" style="display: block; hright: 100%" /></td>
+							</tr>
+						</table>
+
+					</form>
+
+					<a href="/users/new">注册</a> <img id="img" src="" title="单击刷新"
+						onclick="refreashCode1()" style="display: inline" /> <input
+						type="hidden" id="code" name="code" value="" />
+				</div>
+				<div id="south" region="south" title=""
+					style="padding: 5px; height: 5%;">
+					<center>
+						<p style="margin: 0;">版权所有 请联系QQ:740424625</p>
+					</center>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
