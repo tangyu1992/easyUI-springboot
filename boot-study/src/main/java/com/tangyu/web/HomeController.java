@@ -30,7 +30,7 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/img", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCode", method = RequestMethod.GET)
 	@ResponseBody
 	public PageCode getImp() {
 		return codeService.createSession("test");

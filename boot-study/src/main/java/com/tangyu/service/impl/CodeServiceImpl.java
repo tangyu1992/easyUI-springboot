@@ -47,7 +47,7 @@ public class CodeServiceImpl implements CodeService {
 		final String[] sourceCodes = { "a", "b", "c", "d", "e", "f", "1", "2", "3", "4", "5", "6" };
 		final String[] codes = imageService.getCodes(sourceCodes, 5);
 		if (codes != null && codes.length > 0) {
-			final String bs64 = imageService.getBase64ByCodes(codes, 100, 50);
+			final String bs64 = imageService.getBase64ByCodes(codes, 100, 25);
 			if (StringUtils.isNotBlank(bs64)) {
 				final String uuid = UUID.randomUUID().toString();
 				pageCode.setUuid(uuid);

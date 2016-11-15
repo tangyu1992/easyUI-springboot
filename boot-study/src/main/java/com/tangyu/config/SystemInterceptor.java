@@ -11,11 +11,10 @@ public class SystemInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		HttpSession session = request.getSession();
-
 		if (session.getAttribute("currentUser") == null) {
-			//session.invalidate();
-			//response.sendRedirect("/login");
-			//return false;
+			session.invalidate();
+			response.sendRedirect("/login");
+			return false;
 		}
 		return true;
 	}
