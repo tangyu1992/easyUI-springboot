@@ -17,4 +17,14 @@ public interface CodeService {
 	 * @return
 	 */
 	PageCode createSession(String org);
+
+	/****
+	 * 根据企业uuId，key和验证码code判断输入的验证码是否正确
+	 * 
+	 * @param orgId
+	 * @param key
+	 * @param code
+	 * @return 0:验证码正确 1：无此验证码或已过期 2：验证码不正确 3：参数错误
+	 */
+	int authCode(String orgId, String key, String code);
 }

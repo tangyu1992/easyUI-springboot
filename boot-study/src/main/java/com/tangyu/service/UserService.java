@@ -57,4 +57,10 @@ public interface UserService {
 	 * @return
 	 */
 	int deleteByMap(Map<String, Object> paramMap);
+	/****
+	 * 登录
+	 * @param user
+	 * @return
+	 */
+	User login(User user);
 }

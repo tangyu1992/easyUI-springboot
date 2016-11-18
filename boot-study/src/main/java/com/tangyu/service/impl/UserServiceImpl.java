@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int insert(User user) {
-		if (user != null && StringUtils.isNotBlank(user.geteMail()) && StringUtils.isNotBlank(user.getName())
+		if (user != null && StringUtils.isNotBlank(user.getEmail()) && StringUtils.isNotBlank(user.getName())
 				&& StringUtils.isNotBlank(user.getPassword())) {
 			return userMapper.insert(user);
 		}
@@ -72,6 +72,20 @@ public class UserServiceImpl implements UserService {
 			return userMapper.deleteByMap(paramMap);
 		}
 		return 0;
+	}
+
+	@Override
+	public User login(User user) {
+		if (user != null && StringUtils.isNotBlank(user.getEmail()) && StringUtils.isNotBlank(user.getPassword())) {
+			final Map<String, Object> paramMap = new HashMap<>();
+			paramMap.put("email", user.getEmail());
+			paramMap.put("password", user.getPassword());
+			List<User> users = userMapper.queryByMap(paramMap);
+			if (users.size() == 1) {
+				return users.get(0);
+			}
+		}
+		return null;
 	}
 
 }
