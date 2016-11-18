@@ -10,7 +10,7 @@
 		<result column="birthday" property="birthday" />
 		<result column="password" property="password" />
 		<result column="local" property="local" />
-		<result column="e_mail" property="eMail" />
+		<result column="email" property="email" />
 		<result column="status" property="status" />
 		<result column="created_at" property="createdAt" />
 		<result column="updated_at" property="updatedAt" />
@@ -148,11 +148,9 @@
 		</set>
 		WHERE id = #{id,jdbcType=BIGINT}
 	</update>
-
-	<select id="queryByMap" parameterType="java.util.Map"
-		resultMap="BaseResultMap">
+	<select id="queryByMap" parameterType="java.util.Map" resultMap="BaseResultMap">
 		SELECT
-		<include refid="Relation_Column_List" />
+		<include refid="Base_Column_List" />
 		FROM user
 		where 1=1
 		<if test="id!=null">
@@ -160,6 +158,41 @@
 		</if>
 		<if test="name!=null">
 			and name like '%${name}%'
+		</if>
+		<if test="email!=null">
+			and email = #{email}
+		</if>
+		<if test="password!=null">
+			and password = #{password}
+		</if>
+		<if test="mobile!=null">
+			and mobile like '%${mobile}%'
+		</if>
+		<if test="statue!=null">
+			and status=#{status}
+		</if>
+		<if test="gender!=null">
+			and gender=#{gender}
+		</if>
+		order by id asc
+	</select>
+	<select id="queryByMapPage" parameterType="java.util.Map"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM user
+		where 1=1
+		<if test="id!=null">
+			and id=#{id}
+		</if>
+		<if test="name!=null">
+			and name like '%${name}%'
+		</if>
+		<if test="email!=null">
+			and email = #{email}'
+		</if>
+		<if test="password!=null">
+			and password = #{password}'
 		</if>
 		<if test="mobile!=null">
 			and mobile like '%${mobile}%'
@@ -173,7 +206,7 @@
 		order by id asc limit #{pageSize} offset #{pageNum}
 	</select>
 
-	<select id="queryByMapCount" parameterType="java.util.Map"
+	<select id="queryByMapCountPage" parameterType="java.util.Map"
 		resultType="Integer">
 		SELECT COUNT(a.id) FROM user
 		<if test="id!=null">
@@ -181,6 +214,12 @@
 		</if>
 		<if test="name!=null">
 			and name like '%${name}%'
+		</if>
+		<if test="email!=null">
+			and email = #{email}'
+		</if>
+		<if test="password!=null">
+			and password = #{password}'
 		</if>
 		<if test="mobile!=null">
 			and mobile like '%${mobile}%'

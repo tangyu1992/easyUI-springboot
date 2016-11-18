@@ -1,5 +1,6 @@
 package com.tangyu.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /****
@@ -8,7 +9,11 @@ import java.util.Date;
  * @author tangyu
  *
  */
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
 	private Integer age;
@@ -17,7 +22,7 @@ public class User {
 	private Date birthday;
 	private String password;
 	private String local;
-	private String eMail;
+	private String email;
 	private Integer status;
 	private Date createdAt;
 	private Date updatedAt;
@@ -79,12 +84,12 @@ public class User {
 		this.local = local;
 	}
 
-	public String geteMail() {
-		return eMail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getRemark() {
@@ -130,8 +135,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", age=" + age + ", gender=" + gender + ", mobile=" + mobile
-				+ ", birthday=" + birthday + ", password=" + password + ", local=" + local + ", eMail=" + eMail
+				+ ", birthday=" + birthday + ", password=" + password + ", local=" + local + ", email=" + email
 				+ ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", remark=" + remark
 				+ "]";
 	}
+
 }

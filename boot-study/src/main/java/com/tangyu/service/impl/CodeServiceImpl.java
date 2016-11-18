@@ -52,13 +52,31 @@ public class CodeServiceImpl implements CodeService {
 				final String uuid = UUID.randomUUID().toString();
 				pageCode.setUuid(uuid);
 				pageCode.setImgCode("data:image/gif;base64," + bs64);
-				String code= StringUtils.join(codes);
-				redisService.setValue("tangyu:code:" + org + ":" + uuid,code, 50L);
+				String code = StringUtils.join(codes);
+				redisService.setValue("tangyu:code:" + org + ":" + uuid, code, 50L);
 			}
 		} else {
 			pageCode.setIscreated(false);
 		}
 		return pageCode;
+	}
+
+	@Override
+	public int authCode(String orgId, String key, String code) {
+		if (StringUtils.isNoneBlank(orgId) && StringUtils.isNoneBlank(key) && StringUtils.isNoneBlank(code)) {
+			String redisCode = redisService.getValueByKey("tangyu:code:test:" + key);
+			logger.info("key:{},redisCode:{},code:{}",key,redisCode,code);
+			if (StringUtils.isEmpty(redisCode)) {
+				return 1;
+			} else {
+				if (redisCode.equals(code)) {
+					return 0;
+				} else {
+					return 2;
+				}
+			}
+		}
+		return 3;
 	}
 
 }

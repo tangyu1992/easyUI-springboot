@@ -27,7 +27,7 @@ public class HomeController {
 		String localIp = HttpUtils.getRequestIp(request);
 		logger.info("get request from {}", localIp);
 		model.addAttribute("ip", localIp);
-		return "index";
+		return "adminLte/index";
 	}
 
 	@RequestMapping(value = "/getCode", method = RequestMethod.GET)

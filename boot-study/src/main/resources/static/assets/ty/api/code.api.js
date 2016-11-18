@@ -33,7 +33,7 @@ function getCode() {
 			success : function(data) {
 				if (data.iscreated == true) {
 					$('#' + imgId).attr('src', data.imgCode);
-					$('#code').val(data.uuid);
+					$('#key').val(data.uuid);
 				} else {
 					alert("fail!");
 				}
