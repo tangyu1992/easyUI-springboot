@@ -15,7 +15,7 @@ public class SecurityController {
 
 	@RequestMapping(value = "login")
 	public String login() {
-		return "adminLte/fixed";
+		return "adminLte/login";
 	}
 
 	@RequestMapping(value = "auth")
