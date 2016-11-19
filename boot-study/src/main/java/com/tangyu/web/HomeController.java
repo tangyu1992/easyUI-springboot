@@ -23,7 +23,12 @@ public class HomeController {
 	private CodeService codeService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String test(Model model, HttpServletRequest request) {
+	public String portal() {
+		return "portal/portal";
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String index(Model model, HttpServletRequest request) {
 		String localIp = HttpUtils.getRequestIp(request);
 		logger.info("get request from {}", localIp);
 		model.addAttribute("ip", localIp);
@@ -32,7 +37,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/getCode", method = RequestMethod.GET)
 	@ResponseBody
-	public PageCode getImp() {
+	public PageCode getImg() {
 		return codeService.createSession("test");
 	}
 }
