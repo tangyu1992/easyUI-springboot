@@ -20,7 +20,7 @@ public class SecurityController {
 	private UserService userService;
 	@Autowired
 	private CodeService codeService;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@RequestMapping(value = "login")
@@ -31,9 +31,9 @@ public class SecurityController {
 	@RequestMapping(value = "auth")
 	@ResponseBody
 	public AjaxJson auth(User user, String key, String code, HttpSession session) {
-		logger.info("user:{}",user);
+		logger.info("user:{}", user);
 		final AjaxJson json = new AjaxJson();
-		logger.info("code:{},key:{}",code,key);
+		logger.info("code:{},key:{}", code, key);
 		if (codeService.authCode("test", key, code) != 0) {
 
 			json.setMsg("验证码错误，请重试！");
@@ -51,5 +51,11 @@ public class SecurityController {
 			session.setAttribute("currentUser", loginUser);
 		}
 		return json;
+	}
+
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

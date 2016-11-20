@@ -17,7 +17,8 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String index() {
+	public String index(Model model) {
+		
 		return "/user/index";
 	}
 

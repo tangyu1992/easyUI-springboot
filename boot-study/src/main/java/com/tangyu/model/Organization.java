@@ -2,99 +2,94 @@ package com.tangyu.model;
 
 import java.util.Date;
 
-/****
- * 组织实体类
- * 
- * @author tangyu
- *
- */
 public class Organization {
-	private Long id;
-	private String name;
-	private String code;
-	private Long parentId;
-	private Integer level;
-	private Integer status;
-	private Date createdAt;
-	private Date updatedAt;
-	private String remark;
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String code;
 
-	public String getName() {
-		return name;
-	}
+    private Long parentId;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private Integer level;
 
-	public String getCode() {
-		return code;
-	}
+    private Integer status;
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    private Date createdAt;
 
-	public Long getParentId() {
-		return parentId;
-	}
+    private Date updatedAt;
 
-	public void setParentId(Long parentId) {
-		this.parentId = parentId;
-	}
+    private String remark;
 
-	public Integer getLevel() {
-		return level;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Integer getStatus() {
-		return status;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public Long getParentId() {
+        return parentId;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public Integer getLevel() {
+        return level;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
-	@Override
-	public String toString() {
-		return "Organization [id=" + id + ", name=" + name + ", code=" + code + ", parentId=" + parentId + ", level="
-				+ level + ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", remark="
-				+ remark + "]";
-	}
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }
