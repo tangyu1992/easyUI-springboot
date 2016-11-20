@@ -2,89 +2,84 @@ package com.tangyu.model;
 
 import java.util.Date;
 
-/****
- * 角色实体类
- * 
- * @author tangyu
- *
- */
 public class Role {
-	private Long id;
-	private String name;
-	private Integer status;
-	private Integer level;
-	private Long orgId;
-	private Date createdAt;
-	private Date updatedAt;
-	private String remark;
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private Integer status;
 
-	public String getName() {
-		return name;
-	}
+    private Integer level;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String orgId;
 
-	public Integer getStatus() {
-		return status;
-	}
+    private Date createdAt;
 
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
+    private Date updatedAt;
 
-	public Integer getLevel() {
-		return level;
-	}
+    private String remark;
 
-	public void setLevel(Integer level) {
-		this.level = level;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public Long getOrgId() {
-		return orgId;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setOrgId(Long orgId) {
-		this.orgId = orgId;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public Integer getStatus() {
+        return status;
+    }
 
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
+    public Integer getLevel() {
+        return level;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getOrgId() {
+        return orgId;
+    }
 
-	@Override
-	public String toString() {
-		return "Role [id=" + id + ", name=" + name + ", status=" + status + ", level=" + level + ", orgId=" + orgId
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", remark=" + remark + "]";
-	}
+    public void setOrgId(String orgId) {
+        this.orgId = orgId;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }
