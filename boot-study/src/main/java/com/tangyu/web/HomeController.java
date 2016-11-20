@@ -1,6 +1,7 @@
 package com.tangyu.web;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tangyu.model.User;
 import com.tangyu.service.CodeService;
 import com.tangyu.utils.PageCode;
 
@@ -27,11 +29,14 @@ public class HomeController {
 		return "portal/portal";
 	}
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/index")
 	public String index(Model model, HttpServletRequest request) {
-		String localIp = HttpUtils.getRequestIp(request);
+		final HttpSession session=request.getSession();
+		final User currentUser=(User) session.getAttribute("currentUser");
+		final String localIp = HttpUtils.getRequestIp(request);
 		logger.info("get request from {}", localIp);
 		model.addAttribute("ip", localIp);
+		model.addAttribute("currentUser", currentUser);
 		return "adminLte/index";
 	}
 
