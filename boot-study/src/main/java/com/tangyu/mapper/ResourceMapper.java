@@ -1,30 +1,18 @@
 package com.tangyu.mapper;
 
 import com.tangyu.model.Resource;
-import com.tangyu.model.ResourceExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface ResourceMapper {
-    int countByExample(ResourceExample example);
 
-    int deleteByExample(ResourceExample example);
+	int deleteByPrimaryKey(Long id);
 
-    int deleteByPrimaryKey(Long id);
+	int insert(Resource record);
 
-    int insert(Resource record);
+	int insertSelective(Resource record);
 
-    int insertSelective(Resource record);
+	Resource selectByPrimaryKey(Long id);
 
-    List<Resource> selectByExample(ResourceExample example);
+	int updateByPrimaryKeySelective(Resource record);
 
-    Resource selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("record") Resource record, @Param("example") ResourceExample example);
-
-    int updateByExample(@Param("record") Resource record, @Param("example") ResourceExample example);
-
-    int updateByPrimaryKeySelective(Resource record);
-
-    int updateByPrimaryKey(Resource record);
+	int updateByPrimaryKey(Resource record);
 }

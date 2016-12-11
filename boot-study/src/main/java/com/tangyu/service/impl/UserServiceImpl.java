@@ -80,8 +80,21 @@ public class UserServiceImpl implements UserService {
 			final Map<String, Object> paramMap = new HashMap<>();
 			paramMap.put("email", user.getEmail());
 			paramMap.put("password", user.getPassword());
-			List<User> users = userMapper.queryByMap(paramMap);
+			final List<User> users = userMapper.queryByMap(paramMap);
 			if (users.size() == 1) {
+				return users.get(0);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public User queryByEmail(String email) {
+		if (StringUtils.isNotBlank(email)) {
+			final Map<String, Object> paramMap = new HashMap<>();
+			paramMap.put("email", email);
+			final List<User> users = userMapper.queryByMap(paramMap);
+			if (users.size() >= 1) {
 				return users.get(0);
 			}
 		}

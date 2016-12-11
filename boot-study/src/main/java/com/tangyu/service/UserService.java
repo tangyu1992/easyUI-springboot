@@ -45,7 +45,8 @@ public interface UserService {
 	User queryById(Long id);
 
 	/****
-	 * 通过map查询，其中传参：id 通过id查询 name name模糊查询 
+	 * 通过map查询，其中传参：id 通过id查询 name name模糊查询 email:email查询
+	 * 
 	 * @param paramMap
 	 * @return
 	 */
@@ -53,14 +54,25 @@ public interface UserService {
 
 	/****
 	 * 通过map实现删除，其中参数： id通过id删除
+	 * 
 	 * @param paramMap
 	 * @return
 	 */
 	int deleteByMap(Map<String, Object> paramMap);
+
 	/****
 	 * 登录
+	 * 
 	 * @param user
 	 * @return
 	 */
 	User login(User user);
+
+	/****
+	 * 通过email查找
+	 * 
+	 * @param email
+	 * @return
+	 */
+	User queryByEmail(String email);
 }

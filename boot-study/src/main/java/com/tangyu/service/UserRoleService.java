@@ -1,12 +1,17 @@
-package com.tangyu.mapper;
+package com.tangyu.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.tangyu.model.UserRole;
 
-public interface UserRoleMapper {
+public interface UserRoleService {
+	/****
+	 * 通过userId查询所有的角色绑定
+	 * 
+	 * @param userId
+	 * @return
+	 */
+	List<UserRole> queryByUserId(Long userId);
 
 	int deleteByPrimaryKey(Long id);
 
@@ -19,6 +24,4 @@ public interface UserRoleMapper {
 	int updateByPrimaryKeySelective(UserRole record);
 
 	int updateByPrimaryKey(UserRole record);
-
-	List<UserRole> selectByUserId(@Param("userId") Long userId);
 }

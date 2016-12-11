@@ -1,30 +1,18 @@
 package com.tangyu.mapper;
 
 import com.tangyu.model.Organization;
-import com.tangyu.model.OrganizationExample;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface OrganizationMapper {
-    int countByExample(OrganizationExample example);
 
-    int deleteByExample(OrganizationExample example);
+	int deleteByPrimaryKey(Long id);
 
-    int deleteByPrimaryKey(Long id);
+	int insert(Organization record);
 
-    int insert(Organization record);
+	int insertSelective(Organization record);
 
-    int insertSelective(Organization record);
+	Organization selectByPrimaryKey(Long id);
 
-    List<Organization> selectByExample(OrganizationExample example);
+	int updateByPrimaryKeySelective(Organization record);
 
-    Organization selectByPrimaryKey(Long id);
-
-    int updateByExampleSelective(@Param("record") Organization record, @Param("example") OrganizationExample example);
-
-    int updateByExample(@Param("record") Organization record, @Param("example") OrganizationExample example);
-
-    int updateByPrimaryKeySelective(Organization record);
-
-    int updateByPrimaryKey(Organization record);
+	int updateByPrimaryKey(Organization record);
 }
