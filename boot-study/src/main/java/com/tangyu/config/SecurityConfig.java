@@ -8,6 +8,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class SecurityConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new SystemInterceptor()).excludePathPatterns("/","/login", "/users/register","/auth", "/error", "/getCode","/mail");
+		//registry.addInterceptor(new SystemInterceptor()).excludePathPatterns("/","/login", "/users/register","/auth", "/error", "/getCode","/mail");
 	}
 }

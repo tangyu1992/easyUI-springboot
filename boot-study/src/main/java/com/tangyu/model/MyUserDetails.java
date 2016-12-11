@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class MyUserDetails implements UserDetails {
+public class MyUserDetails extends User implements UserDetails {
 
 	/**
 	 * 
@@ -17,7 +17,9 @@ public class MyUserDetails implements UserDetails {
 	private User user;
 
 	public MyUserDetails(User user, List<UserRole> roles) {
-		this.user = user;
+		this.setEmail(user.getEmail());
+		this.setPassword(user.getPassword());
+		this.setName(user.getName());
 		this.roles = roles;
 	}
 

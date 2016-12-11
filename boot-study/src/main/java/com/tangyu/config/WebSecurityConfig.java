@@ -21,24 +21,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;// 自定义用户服务
 
-	@Autowired
-	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/","/assets/**").permitAll()// 无需访问权限
-		// .antMatchers(StaticParams.PATHREGX.AUTHADMIN).hasAuthority(StaticParams.USERROLE.ROLE_ADMIN)//
-		// admin角色访问权限
-		// .antMatchers(StaticParams.PATHREGX.AUTHUSER).hasAuthority(StaticParams.USERROLE.ROLE_USER)//
-		// user角色访问权限
-		.anyRequest()// all others request authentication
+		http.csrf().disable().authorizeRequests()
+				.antMatchers("/", "/assets/**", "/auth", "/getCode").permitAll()// 无需访问权限
+				// .antMatchers(StaticParams.PATHREGX.AUTHADMIN).hasAuthority(StaticParams.USERROLE.ROLE_ADMIN)//
+				// admin角色访问权限
+				// .antMatchers(StaticParams.PATHREGX.AUTHUSER).hasAuthority(StaticParams.USERROLE.ROLE_USER)//
+				// user角色访问权限
+				.anyRequest()// all others request authentication
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		System.out.println(222);
 		// 将验证过程交给自定义验证工具
 		auth.authenticationProvider(provider);
 	}

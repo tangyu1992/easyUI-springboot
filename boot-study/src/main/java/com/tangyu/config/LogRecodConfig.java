@@ -16,6 +16,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.tangyu.utils.HttpUtils;
+
 /****
  * 
  * @author tangyu
@@ -39,18 +41,15 @@ public class LogRecodConfig {
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
 		// 记录下请求内容
-		logger.info("URL : " + request.getRequestURL().toString());
-		logger.info("HTTP_METHOD : " + request.getMethod());
-		logger.info("IP : " + request.getRemoteAddr());
-		logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
-				+ joinPoint.getSignature().getName());
-		logger.info("ARGS : " + Arrays.toString(joinPoint.getArgs()));
+		logger.info("url:{},method:{},IP:{},method:{},args:{}", request.getRequestURL().toString(), request.getMethod(),
+				HttpUtils.getRequestIp(request),
+				joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName(),
+				Arrays.toString(joinPoint.getArgs()));
 	}
 
 	@AfterReturning(returning = "ret", pointcut = "webLog()")
 	public void doAfterReturning(Object ret) throws Throwable {
 		// 处理完请求，返回内容
-		logger.info("RESPONSE : " + ret);
-		logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
+		logger.info("response:{},cost time:{}", ret, (System.currentTimeMillis() - startTime.get()));
 	}
 }

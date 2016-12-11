@@ -1,4 +1,4 @@
-package com.tangyu.utils;
+package com.tangyu.service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import com.tangyu.model.UserRole;
 import com.tangyu.service.UserRoleService;
 import com.tangyu.service.UserService;
 
-@Service("UserDetailsService")
+@Service
 public class MyUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserService userService;
@@ -22,10 +22,11 @@ public class MyUserDetailsService implements UserDetailsService {
 	private UserRoleService userRoleService;
 
 	@Override
-	public UserDetails loadUserByUsername(String eMail) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user;
 		try {
-			user = userService.queryByEmail(eMail);
+			System.out.println(3333);
+			user = userService.queryByEmail(email);
 		} catch (Exception e) {
 			throw new UsernameNotFoundException("user select fail");
 		}
