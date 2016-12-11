@@ -1,5 +1,7 @@
 package com.tangyu.utils;
 
+import java.util.Date;
+
 /****
  * 时间工具类
  * 
@@ -7,5 +9,12 @@ package com.tangyu.utils;
  *
  */
 public class DateUtils {
-
+	/****
+	 * 获取当前时间
+	 * 
+	 * @return
+	 */
+	public static Date getCurrentDate() {
+		return new Date();
+	}
 }
