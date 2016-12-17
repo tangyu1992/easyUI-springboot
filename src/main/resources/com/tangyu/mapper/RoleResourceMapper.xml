@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangyu.mapper.RoleResourceMapper">
+	<resultMap id="BaseResultMap" type="com.tangyu.model.RoleResource">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="role_id" property="roleId" jdbcType="BIGINT" />
+		<result column="resource_id" property="resourceId" jdbcType="BIGINT" />
+		<result column="org_id" property="orgId" jdbcType="VARCHAR" />
+		<result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+		<result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, role_id, resource_id, org_id, created_at, updated_at
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from role_resource
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from role_resource
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.tangyu.model.RoleResource"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into role_resource (id, role_id, resource_id,
+		org_id, created_at, updated_at
+		)
+		values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT},
+		#{resourceId,jdbcType=BIGINT},
+		#{orgId,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.tangyu.model.RoleResource"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into role_resource
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="roleId != null">
+				role_id,
+			</if>
+			<if test="resourceId != null">
+				resource_id,
+			</if>
+			<if test="orgId != null">
+				org_id,
+			</if>
+			<if test="createdAt != null">
+				created_at,
+			</if>
+			<if test="updatedAt != null">
+				updated_at,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=BIGINT},
+			</if>
+			<if test="resourceId != null">
+				#{resourceId,jdbcType=BIGINT},
+			</if>
+			<if test="orgId != null">
+				#{orgId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdAt != null">
+				#{createdAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedAt != null">
+				#{updatedAt,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.tangyu.model.RoleResource">
+		update role_resource
+		<set>
+			<if test="roleId != null">
+				role_id = #{roleId,jdbcType=BIGINT},
+			</if>
+			<if test="resourceId != null">
+				resource_id = #{resourceId,jdbcType=BIGINT},
+			</if>
+			<if test="orgId != null">
+				org_id = #{orgId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdAt != null">
+				created_at = #{createdAt,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedAt != null">
+				updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.tangyu.model.RoleResource">
+		update role_resource
+		set role_id = #{roleId,jdbcType=BIGINT},
+		resource_id = #{resourceId,jdbcType=BIGINT},
+		org_id = #{orgId,jdbcType=VARCHAR},
+		created_at = #{createdAt,jdbcType=TIMESTAMP},
+		updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>
