@@ -1,5 +1,0 @@
-package com.tangyu.config;
-
-public class DruidConfiguration {
-
-}
