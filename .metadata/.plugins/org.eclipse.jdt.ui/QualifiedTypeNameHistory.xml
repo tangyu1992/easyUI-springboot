@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.lang.Boolean"/>
+<fullyQualifiedTypeName name="com.tangyu.config.MyMapper"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.condition.ConditionalOnClass"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
+<fullyQualifiedTypeName name="org.mybatis.spring.SqlSessionFactoryBean"/>
+<fullyQualifiedTypeName name="org.springframework.boot.context.properties.EnableConfigurationProperties"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.AutoConfigureAfter"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration"/>
+<fullyQualifiedTypeName name="tk.mybatis.mapper.mapperhelper.MapperHelper"/>
+<fullyQualifiedTypeName name="tk.mybatis.mapper.entity.Config"/>
+<fullyQualifiedTypeName name="tk.mybatis.mapper.common.Mapper"/>
+<fullyQualifiedTypeName name="org.mybatis.spring.boot.autoconfigure.MybatisProperties"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+<fullyQualifiedTypeName name="org.apache.shiro.authc.credential.HashedCredentialsMatcher"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.DependsOn"/>
+<fullyQualifiedTypeName name="org.apache.shiro.cache.ehcache.EhCacheManager"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
+<fullyQualifiedTypeName name="org.apache.shiro.web.filter.authc.LogoutFilter"/>
+<fullyQualifiedTypeName name="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+<fullyQualifiedTypeName name="org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean"/>
+<fullyQualifiedTypeName name="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
+<fullyQualifiedTypeName name="org.apache.shiro.spring.web.ShiroFilterFactoryBean"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+<fullyQualifiedTypeName name="org.apache.shiro.web.mgt.DefaultWebSecurityManager"/>
+<fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+</qualifiedTypeNameHistroy>

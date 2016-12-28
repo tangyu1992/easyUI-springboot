@@ -1,9 +1,0 @@
-${AnsiColor.BRIGHT_BLUE}
-
-TangYu...............................
-
-＼(^O^)／    Spring-Boot ${spring-boot.version}
-
-${AnsiColor.BRIGHT_GREEN}
-
-            
